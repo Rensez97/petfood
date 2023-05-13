@@ -1,0 +1,230 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="robots" content="follow" />
+    <meta name="description" content="Dierenvoedingexpert weergeeft een ruim assortiment dierenvoeding voor diverse huisdieren tegen betaalbare prijzen. Bekijk onze aanbiedingen en bespaar vandaag nog op het voer van uw huisdier.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'website/css/vendor/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/vendor/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/vendor/flaticon/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/vendor/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/vendor/slick-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/vendor/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/vendor/sal.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/vendor/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/vendor/base.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Dierenvoedingexpert</title>
+    {% endif %}
+    <link rel="icon" type="image/x-icon" href="{% static 'website/images/logo/logo_icon_small.png' %}">
+</head>
+
+
+<body class="sticky-header">
+    <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+    <a href="#top" class="back-to-top" id="backto-top"><i class="fal fa-arrow-up"></i></a>
+    <!-- Start Header -->
+    <header class="header axil-header header-style-5" style="background-color: #FFFFFF;">
+        <!-- Start Mainmenu Area  -->
+        <div id="axil-sticky-placeholder"></div>
+        <div class="axil-mainmenu">
+            <div class="container">
+                <div class="header-navbar">
+                    <div class="header-brand">
+                        <a href="/" class="logo logo-dark">
+                            <img src="{% static 'website/images/logo/good_logo.png' %}" alt="Site logo">
+                        </a>
+                        <a href="/" class="logo logo-light">
+                            <img src="{% static 'website/images/logo/good_logo.png' %}" alt="Site Logo">
+                        </a>
+                    </div>
+                    <div class="header-main-nav">
+                        <!-- Start Mainmanu Nav -->
+                        <nav class="mainmenu-nav">
+                            <button class="mobile-close-btn mobile-nav-toggler"><i class="fas fa-times"></i></button>
+                            <div class="mobile-nav-brand">
+                                <a href="/" class="logo">
+                                    <img src="{% static 'website/images/logo/good_logo.png' %}" alt="Site logo">
+                                </a>
+                            </div>
+                            <ul class="mainmenu">
+                                <li><a href="{% url 'website:aanbiedingen-algemeen' %}">Aanbiedingen</a></li>
+                                <li class="menu-item-has-children">
+                                    <a href="{% url 'website:hond-algemeen' %}">Hond</a>
+                                    <ul class="axil-submenu">
+                                        <li><a href="{% url 'website:hond-algemeen' %}?category=Droogvoer">Droogvoer</a></li>
+                                        <li><a href="{% url 'website:hond-algemeen' %}?category=Natvoer">Natvoer</a></li>
+                                        <li><a href="{% url 'website:hond-algemeen' %}?category=Diepvriesvoer">Diepvriesvoer</a></li>
+                                        <li><a href="{% url 'website:hond-algemeen' %}?category=Hondensnack">Hondensnack</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{% url 'website:kat-algemeen' %}">Kat</a>
+                                    <ul class="axil-submenu">
+                                        <li><a href="{% url 'website:kat-algemeen' %}?category=Droogvoer">Droogvoer</a></li>
+                                        <li><a href="{% url 'website:kat-algemeen' %}?category=Natvoer">Natvoer</a></li>
+                                        <li><a href="{% url 'website:kat-algemeen' %}?category=Diepvriesvoer">Diepvriesvoer</a></li>
+                                        <li><a href="{% url 'website:kat-algemeen' %}?category=Kattensnack">Kattensnack</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{% url 'website:knaagdier-algemeen' %}">Knaagdier</a>
+                                    <ul class="axil-submenu">
+                                        <li><a href="{% url 'website:knaagdier-algemeen' %}?age_group=Konijn">Konijnenvoer</a></li>
+                                        <li><a href="{% url 'website:knaagdier-algemeen' %}?age_group=Cavia">Caviavoer</a></li>
+                                        <li><a href="{% url 'website:knaagdier-algemeen' %}?age_group=Hamster">Hamstervoer</a></li>
+                                        <li><a href="{% url 'website:knaagdier-algemeen' %}?age_group=Rat">Rattenvoer</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{% url 'website:apotheek-algemeen' %}">Apotheek</a>
+                                    <ul class="axil-submenu">
+                                        <li><a href="{% url 'website:apotheek-algemeen' %}?animal=Hond">Hond</a></li>
+                                        <li><a href="{% url 'website:apotheek-algemeen' %}?animal=Kat">Kat</a></li>
+                                        <li><a href="{% url 'website:apotheek-algemeen' %}?animal=Knaagdier">Knaagdier</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'website:over-ons' %}">Over ons</a></li>
+                            </ul>
+                        </nav>
+                        <!-- End Mainmanu Nav -->
+                    </div>
+                    <div class="header-action">
+                        <ul class="action-list">
+                            <form action="{% url 'website:zoeken' %}" method="get" autocomplete="off">
+                                <li class="axil-search d-xl-block d-none">
+                                    <input type="search" name="search2"
+                                        id="search2" value="{{ request.GET.search2 }}" placeholder="Waar ben je naar op zoek?"
+                                        >
+                                    <button type="submit" class="icon wooc-btn-search">
+                                        <i class="flaticon-magnifying-glass"></i>
+                                    </button>
+                                </li>
+                            </form>
+                            <li class="axil-mobile-toggle">
+                                <button class="menu-btn mobile-nav-toggler">
+                                    <i class="flaticon-menu-2"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Mainmenu Area -->
+    </header>
+    <!-- End Header -->
+
+    
+    <main class="main-wrapper">
+        {% block content %}{% endblock %}
+    </main>
+
+
+    <!-- Start Footer Area  -->
+    <footer class="axil-footer-area footer-style-1 bg-color-white">
+        <!-- Start Footer Top Area  -->
+        <div class="footer-top separator-top">
+            <div class="container">
+                <div class="row" style="text-align: center;">
+
+                    <!-- Start Single Widget  -->
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="axil-footer-widget">
+                            <h5 class="widget-title">Info</h5>
+                            <div class="inner">
+                                <ul>
+                                    <li><a href="{% url 'website:over-ons' %}">Over ons</a></li>
+                                    <li>Binnenkort meer...</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="axil-footer-widget">
+                            <h5 class="widget-title">Ga snel naar</h5>
+                            <div class="inner">
+                                <ul>
+                                    <li><a href="{% url 'website:aanbiedingen-algemeen' %}">Aanbiedingen</a></li>
+                                    <li><a href="{% url 'website:hond-algemeen' %}">Hond</a></li>
+                                    <li><a href="{% url 'website:kat-algemeen' %}">Kat</a></li>
+                                    <li><a href="{% url 'website:knaagdier-algemeen' %}">Knaagdier</a></li>
+                                    <li><a href="{% url 'website:apotheek-algemeen' %}">Apotheek</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="axil-footer-widget">
+                            <h5 class="widget-title">Contact</h5>
+                            <div class="inner">
+                                <p>Heeft u vragen, opmerkingen of suggesties? <br>
+                                    Neem dan gerust contact met ons op via <br>
+                                    <i>info@dierenvoedingexpert.nl</i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Top Area  -->
+        <!-- Start Copyright Area  -->
+        <div class="copyright-area copyright-default separator-top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-12 col-lg-12">
+                        <div
+                            class="copyright-right d-flex flex-wrap justify-content-center align-items-center">
+                            <ul class="quick-link">
+                                <li>© 2023 dierenvoedingexpert.nl  </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Copyright Area  -->
+    </footer>
+    <!-- End Footer Area  -->
+
+    <!-- Product Quick View Modal Start -->
+
+    <!-- JS
+============================================ -->
+    <!-- Modernizer JS -->
+    <script src="{% static 'website/js/vendor/modernizr.min.js' %}"></script>
+    <!-- jQuery JS -->
+    <script src="{% static 'website/js/vendor/jquery.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'website/js/vendor/popper.min.js' %}"></script>
+    <script src="{% static 'website/js/vendor/bootstrap.min.js' %}"></script>
+    <script src="{% static 'website/js/vendor/slick.min.js' %}"></script>
+    <script src="{% static 'website/js/vendor/js.cookie.js' %}"></script>
+    <script src="{% static 'website/js/vendor/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'website/js/vendor/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'website/js/vendor/sal.js' %}"></script>
+    <script src="{% static 'website/js/vendor/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'website/js/vendor/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'website/js/vendor/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'website/js/vendor/counterup.js' %}"></script>
+    <script src="{% static 'website/js/vendor/waypoints.min.js' %}"></script>
+
+    <!-- Main JS -->
+    <script src="{% static 'website/js/main.js' %}"></script>
+
+</body>
+
+</html>

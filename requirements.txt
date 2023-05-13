@@ -1,0 +1,10 @@
+asgiref==3.6.0
+#backports.zoneinfo==0.2.1
+chardet==5.1.0
+Django==4.1.7
+django-extensions==3.2.1
+fontawesome-free==5.15.4
+fontawesomefree==6.3.0
+Pillow==9.4.0
+psycopg2-binary==2.9.6
+sqlparse==0.4.3

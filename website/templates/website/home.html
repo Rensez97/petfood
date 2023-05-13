@@ -1,0 +1,502 @@
+{% extends "website/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="axil-main-slider-area main-slider-style-3" style="background-image: url('{% static 'website/images/home/homepage-2-klein.jpg' %}'); background-size: cover;">
+    {% comment %} <div class="bg-image" style="background-image: url('{% static 'website/images/homepage-2.jpg' %}');"></div> {% endcomment %}
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-6 col-lg-6">
+                <div class="main-slider-content">
+                    <span class="subtitle"><i class="fas fa-paw-alt"></i></i>Alles voor jouw huisdier</span>
+                    <h1 class="title homepage">Ontdek de beste deals voor dierenvoeding - vind hier de hoogste kortingen!</h1>
+                    <div class="shop-btn">
+                        <a href="{% url 'website:aanbiedingen-algemeen' %}" class="axil-btn btn-bg-primary right-icon">Ga naar alle aanbiedingen <i class="fal fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="main-slider-large-thumb">
+                    <div class="slider-thumb-activation-two axil-slick-dots">
+                        {% for item in top_items %}
+                        <div class="single-slide slick-slide">
+                            <div class="axil-product product-style-five">
+                                <div class="thumbnail">
+                                    <a href="{{ item.product_page_url }}">
+                                        <img src="{{ item.image.url }}" alt="Product Images">
+                                    </a>
+                                    {% if item.sale != 0.0 %}
+                                    <div class="label-block label-right2">
+                                        <div class="product-badget">
+                                            {{ item.sale }}% korting
+                                        </div>
+                                    </div>
+                                    {% endif%}
+                                </div>
+                                <div class="product-content">
+                                    <div class="inner">
+                                        <h5 class="title"><a href="{{ item.product_page_url }}">{{ item.product_title }}</a></h5>
+                                        <div class="product-price-variant">
+                                            <span class="price old-price">€{{ item.normal_price|floatformat:"2" }} </span>
+                                            <span class="price current-price">€{{ item.sale_price |floatformat:"2" }}</span>
+                                        </div>
+                                        <ul class="cart-action">
+                                            <li class="select-option"><a href="{{ item.product_page_url }}">Bekijk nu!</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start Categorie Area  -->
+<div class="axil-categorie-area pt--30 bg-color-white">
+    <div class="container">
+        <div class="categrie-product-activation-2 categorie-product-two slick-layout-wrapper--15">
+            <div class="slick-single-layout slick-slide">
+                <div class="categrie-product-2">
+                    <a href="{% url 'website:hond-algemeen' %}?brand=Royal Canin">
+                        <img class="img-fluid normal" src="{% static 'website/images/merken/royal-canin-logo.png' %}"
+                            alt="product categorie">
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout slick-slide">
+                <div class="categrie-product-2">
+                    <a href="{% url 'website:hond-algemeen' %}?brand=Hill's">
+                        <img class="img-fluid" src="{% static 'website/images/merken/hills-logo.png' %}"
+                            alt="product categorie">
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout slick-slide">
+                <div class="categrie-product-2">
+                    <a href="{% url 'website:hond-algemeen' %}?brand=Eukanuba">
+                        <img class="img-fluid" src="{% static 'website/images/merken/eukanuba-logo.jpg' %}"
+                            alt="product categorie">
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout slick-slide">
+                <div class="categrie-product-2">
+                    <a href="{% url 'website:hond-algemeen' %}?brand=Pedigree">
+                        <img class="img-fluid" src="{% static 'website/images/merken/pedigree-logo.png' %}"
+                            alt="product categorie">
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout slick-slide">
+                <div class="categrie-product-2">
+                    <a href="{% url 'website:kat-algemeen' %}?brand=Purina One">
+                        <img class="img-fluid" src="{% static 'website/images/merken/purina-pro-plan-logo.png' %}"
+                            alt="product categorie">
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout slick-slide">
+                <div class="categrie-product-2">
+                    <a href="{% url 'website:hond-algemeen' %}?brand=Prins">
+                        <img class="img-fluid" src="{% static 'website/images/merken/prins-logo.png' %}"
+                            alt="product categorie">
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout slick-slide">
+                <div class="categrie-product-2">
+                    <a href="{% url 'website:kat-algemeen' %}?brand=Felix">
+                        <img class="img-fluid" src="{% static 'website/images/merken/felix-logo.jpg' %}"
+                            alt="product categorie">
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <div class="slick-single-layout slick-slide">
+                <div class="categrie-product-2">
+                    <a href="{% url 'website:kat-algemeen' %}?brand=Whiskas">
+                        <img class="img-fluid" src="{% static 'website/images/merken/whiskas-logo.png' %}"
+                            alt="product categorie">
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <div class="slick-single-layout slick-slide">
+                <div class="categrie-product-2">
+                    <a href="{% url 'website:kat-algemeen' %}?brand=Sheba">
+                        <img class="img-fluid" src="{% static 'website/images/merken/sheba-logo.png' %}"
+                            alt="product categorie">
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <div class="slick-single-layout slick-slide">
+                <div class="categrie-product-2">
+                    <a href="{% url 'website:kat-algemeen' %}?brand=Gourmet">
+                        <img class="img-fluid" src="{% static 'website/images/merken/gourmet-logo.png' %}"
+                            alt="product categorie" >
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start Expolre Product Area  -->
+<div class="axil-product-area bg-color-white axil-section-gap">
+    <div class="container">
+        <div class="section-title-wrapper">
+            <h2 class="title">Best verkochte producten van deze maand</h2>
+        </div>
+        <div class="explore-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide">
+            <div class="slick-single-layout" >
+                <div class="row row--15">
+                    {% for product in favorites12 %}
+                    <div class="col-xl-2 col-lg-4 col-sm-6">
+                        <div class="axil-product product-style-seven">
+                            <div class="thumbnail">
+                                <a href="{{ product.product_page_url }}">
+                                    <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy"
+                                        src="{{ product.image.url }}" alt="Product Images">
+                                </a>
+                                {% if product.sale != 0.0 %}
+                                <div class="label-block label-right">
+                                    <div class="product-badget">
+                                        {{ product.sale }}% korting
+                                    </div>
+                                </div>
+                                {% endif%}
+                            </div>
+                            <div class="product-content">
+                                <div class="inner">
+                                    <p><a href="{{ product.product_page_url }}">{{ product.product_title}}</a></p>
+                                    <div class="product-price-variant">
+                                        {% if product.sale_price != product.normal_price %}
+                                        <span class="price old-price">
+                                            €{{ product.normal_price|floatformat:"2" }}
+                                        </span>
+                                        {% endif %}
+                                        <span class="price current-price">€{{ product.sale_price|floatformat:"2" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="slick-single-layout">
+                <div class="row row--15">
+                    {% for product in favorites24 %}
+                    <div class="col-xl-2 col-lg-4 col-sm-6">
+                        <div class="axil-product product-style-seven">
+                            <div class="thumbnail">
+                                <a href="{{ product.product_page_url }}">
+                                    <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy"
+                                        src="{{ product.image.url }}" alt="Product Images">
+                                </a>
+                                {% if product.sale != 0.0 %}
+                                <div class="label-block label-right">
+                                    <div class="product-badget">
+                                        {{ product.sale }}% korting
+                                    </div>
+                                </div>
+                                {% endif%}
+                            </div>
+                            <div class="product-content">
+                                <div class="inner">
+                                    <p><a href="{{ product.product_page_url }}">{{ product.product_title}}</a></p>
+                                    <div class="product-price-variant">
+                                        <span class="price current-price">€{{ product.sale_price|floatformat:"2" }}</span>
+                                        {% if product.sale_price != product.normal_price %}
+                                        <span class="price old-price">
+                                            €{{ product.normal_price|floatformat:"2" }}
+                                        </span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- End Expolre Product Area  -->
+
+
+<!-- Start Most Sold Product Area  -->
+<div class="axil-most-sold-product axil-section-gap pb--0">
+    <div class="container">
+        <div class="product-area pb--50">
+            <div class="section-title-wrapper section-title-center">
+                <span class="title-highlighter highlighter-primary"><i class="fas fa-star"></i>Uitgelicht</span>
+                <h2 class="title">Kilo knallers</h2>
+            </div>
+            <div class="row row-cols-xl-3 row-cols-md-2 row-cols-1 row--15">
+                {% for product in uitgelicht %}
+                <div class="col">
+                    <div class="axil-product-list product-list-style-2">
+                        <div class="thumbnail">
+                            <a href="{{ product.product_page_url }}">
+                                <img data-sal="zoom-in" data-sal-delay="100" data-sal-duration="1500" src="{{ product.image.url }}" alt="NFT">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title product-title">{{ product.brand }}</h6>
+                            <div class="product-price-variant">
+                                <a href="{{ product.product_page_url }}"><span class="price current-price">{{product.product_title}}</span></a>
+                            </div>
+                            <div class="product-cart">
+                                <a href="{{ product.product_page_url }}" class="cart-btn">Bekijk nu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Most Sold Product Area  -->
+
+
+
+<!-- Start Categorie Area  -->
+<div class="axil-categorie-area bg-color-white axil-section-gapcommon">
+    <div class="container">
+        <div class="section-title-wrapper">
+            <span class="title-highlighter highlighter-primary2"> <i class="far fa-tags"></i> Categoriën</span>
+            <h2 class="title">Ga direct naar:</h2>
+        </div>
+        <div class="categrie-product-activation slick-layout-wrapper--15 axil-slick-arrow  arrow-top-slide">
+            <div class="slick-single-layout">
+                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500">
+                    <a href="{% url 'website:hond-algemeen' %}?category=Droogvoer">
+                        <div style="display: flex; align-items: center; height:120px">
+                            <img class="img-fluid" src="{% static 'website/images/categorien/hondenbrokken.jpg' %}" alt="product categorie">
+                        </div>
+                        <h6 class="cat-title">Hondenbrokken</h6>
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout">
+                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="300" data-sal-duration="500">
+                    <a href="{% url 'website:kat-algemeen' %}?category=Natvoer">
+                        <div style="display: flex; align-items: center; height:120px">
+                            <img class="img-fluid" src="{% static 'website/images/categorien/natvoer-kat.png' %}" alt="product categorie">
+                        </div>
+                        <h6 class="cat-title">Natvoer katten</h6>
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout">
+                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="400" data-sal-duration="500">
+                    <a href="{% url 'website:hond-algemeen' %}?age_group=Puppy">
+                        <div style="display: flex; align-items: center; height:120px">
+                            <img class="img-fluid2" src="{% static 'website/images/categorien/puppy.png' %}" alt="product categorie">
+                        </div>
+                        <h6 class="cat-title">Puppyvoer</h6>
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout">
+                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="500" data-sal-duration="500">
+                    <a href="{% url 'website:hond-algemeen' %}?age_group=Senior">
+                        <div style="display: flex; align-items: center; height:120px">
+                            <img class="img-fluid" src="{% static 'website/images/categorien/senior.png' %}" alt="product categorie">
+                        </div>
+                        <h6 class="cat-title">Senior hondvoer</h6>
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout">
+                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="600" data-sal-duration="500">
+                    <a href="{% url 'website:kat-algemeen' %}?age_group=Kitten">
+                        <div style="display: flex; align-items: center; height:120px">
+                            <img class="img-fluid" src="{% static 'website/images/categorien/kitten.png' %}" alt="product categorie">
+                        </div>
+                        <h6 class="cat-title">Kittenvoer</h6>
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            {% comment %} <!-- End .slick-single-layout -->
+            <div class="slick-single-layout">
+                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="800" data-sal-duration="500">
+                    <a href="#">
+                        <img class="img-fluid" src="{% static 'website/images/categorien/biologisch.png' %}" alt="product categorie">
+                        <h6 class="cat-title">Biologisch</h6>
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout">
+                <div class="categrie-product">
+                    <a href="#">
+                        <img class="img-fluid" src="{% static 'website/images/categorien/graanvrij.png' %}" alt="product categorie">
+                        <h6 class="cat-title">Graanvrij</h6>
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div> {% endcomment %}
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout">
+                <div class="categrie-product">
+                    <a href="{% url 'website:hond-algemeen' %}?category=Hondensnack">
+                        <div style="display: flex; align-items: center; height:120px">
+                            <img class="img-fluid" src="{% static 'website/images/categorien/hondenkoekjes.jpg' %}" alt="product categorie">
+                        </div>
+                        <h6 class="cat-title">Hondenkoekjes</h6>
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+            <!-- End .slick-single-layout -->
+            <div class="slick-single-layout">
+                <div class="categrie-product">
+                    <a href="{% url 'website:hond-algemeen' %}?category=Natvoer">
+                        <div style="display: flex; align-items: center; height:120px">
+                            <img class="img-fluid" src="{% static 'website/images/categorien/natvoer-hond.png' %}" alt="product categorie">
+                        </div>
+                        <h6 class="cat-title">Nat hondenvoer</h6>
+                    </a>
+                </div>
+                <!-- End .categrie-product -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Categorie Area  -->
+
+
+<div class="axil-product-area pb--0 axil-section-gap">
+    <div class="container">`
+        <div class="product-area pb--50">
+            <div class="section-title-wrapper">
+                {% comment %} <h2 class="title">Vind hier de populairste producten van deze maand - beste deals en hoogste kortingen!</h2> {% endcomment %}
+                <h2 class="title">Bekijk al onze producten</h2>
+            </div>
+            <div class="row">
+                {% for product in favorites36 %}
+                <div class="col-xl-2 col-lg-4 col-sm-6">
+                    <div class="axil-product product-style-seven">
+                        <div class="thumbnail">
+                            <a href="{{ product.product_page_url }}">
+                                <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy"
+                                    src="{{ product.image.url }}" alt="Product Images">
+                            </a>
+                            {% if product.sale != 0.0 %}
+                            <div class="label-block label-right">
+                                <div class="product-badget">
+                                    {{ product.sale }}% korting
+                                </div>
+                            </div>
+                            {% endif%}
+                        </div>
+                        <div class="product-content">
+                            <div class="inner">
+                                <p><a href="{{ product.product_page_url }}">{{ product.product_title}}</a></p>
+                                <div class="product-price-variant">
+                                    {% if product.sale_price != product.normal_price %}
+                                    <span class="price old-price">
+                                        €{{ product.normal_price|floatformat:"2" }}
+                                    </span>
+                                    {% endif %}
+                                    <span class="price current-price">€{{ product.sale_price|floatformat:"2" }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-lg-12 text-center mt--20 mt_sm--20">
+                <a href="{% url 'website:aanbiedingen-algemeen' %}" class="axil-btn btn-bg-lighter btn-load-more">Bekijk meer producten</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="service-area axil-section-gap">
+    <div class="container">
+        <div class="row row-cols-xl-4 row-cols-sm-2 row-cols-1 row--20">
+            <div class="col">
+                <div class="service-box service-style-2">
+                    <div class="icon">
+                        <img src="{% static 'website/images/icons/service2.png' %}" alt="Service">
+                    </div>
+                    <div class="content">
+                        <h6 class="title">De Laagste Prijs</h6>
+                        <p>Vergelijk het zelf.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="service-box service-style-2">
+                    <div class="icon">
+                        <img src="{% static 'website/images/icons/service1.png' %}" alt="Service">
+                    </div>
+                    <div class="content">
+                        <h6 class="title">Rechtstreeks Kopen</h6>
+                        <p>Ga direct naar de aanbieder.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="service-box service-style-2">
+                    <div class="icon">
+                        <img src="{% static 'website/images/icons/service5.png' %}" alt="Service">
+                    </div>
+                    <div class="content">
+                        <h6 class="title">Het Grootste Aanbod</h6>
+                        <p>Alles op één locatie.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="service-box service-style-2">
+                    <div class="icon">
+                        <img src="{% static 'website/images/icons/service4.png' %}" alt="Service">
+                    </div>
+                    <div class="content">
+                        <h6 class="title">Het Meest Recente</h6>
+                        <p>Blijf op de hoogte.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

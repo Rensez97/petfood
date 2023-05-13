@@ -1,0 +1,181 @@
+{% extends "website/base.html" %}
+{% load static %}
+{% block content %}
+{% load urlgen %}
+
+
+<!-- Start Breadcrumb Area  -->
+<div class="axil-breadcrumb-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="inner">
+                    <h1 class="title">Vind hier de beste deals</h1>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-8">
+                {% comment %} <p>
+                    Bekijk nu de actuele aanbiedingen voor hoogwaardige dierenvoeding en zorg ervoor dat je huisdier alleen het beste krijgt.<br>
+                    Wij begrijpen dat de kosten van premium voeding hoog kunnen zijn, maar wij zijn er om te helpen! <br>
+                    Met deze voeding blijft jouw huisdier gezond en gelukkig, zonder dat je je zorgen hoeft te maken over de kosten.<br>
+                    Profiteer nu van deze geweldige deals en geef je huisdier de voeding die het verdient.
+                </p> {% endcomment %}
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <div class="inner">
+                    <div class="bradcrumb-thumb">
+                        <img src="{% static 'website/images/discount-icon.png' %}" alt="Image" style="max-height:100px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumb Area  -->
+
+<!-- Start Shop Area  -->
+<div class="axil-shop-area axil-section-gap bg-color-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="axil-shop-sidebar">
+                    <div class="toggle-list product-categories active">
+                        <h6 class="title">Categorie</h6>
+                        <div class="shop-submenu">
+                            <ul>
+                                {% for dier in animals %}
+                                    <li{% if animal == dier %} class="current-cat"{% endif %}>
+                                        <a href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr "animal" dier "brand" brand "sort_by" sort_by %}" class="niet-verwijder">{{ dier }}</a>
+                                    </li>
+                                {% endfor %}
+                                    <li{% if category == 'Apotheek' %} class="current-cat"{% endif %}>
+                                        <a href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr "category" "Apotheek" "sort_by" sort_by %}" class="niet-verwijder">Apotheek</a>
+                                    </li>
+                                {% if animal or category %}<li><a href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr "brand" brand "sort_by" sort_by %}" style="color:red;">Verwijder filter</a></li>{% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="toggle-list product-categories active">
+                        <h6 class="title">Merk</h6>
+                        <div class="shop-submenu">
+                            <ul>
+                                {% for merk in brands %}
+                                    <li{% if brand == merk %} class="current-cat"{% endif %}>
+                                        <a href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr "category" category "animal" animal "brand" merk "sort_by" sort_by %}" class="niet-verwijder">{{ merk }}</a>
+                                    </li>
+                                {% endfor %}
+                                {% if brand %}<li><a href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr "category" category "animal" animal "sort_by" sort_by %}" style="color:red;">Verwijder filter</a></li>{% endif %}
+                            </ul>
+                        </div>
+                    </div>                    
+                    <a href="{% url 'website:aanbiedingen-algemeen' %}"><button class="axil-btn btn-bg-primary">Reset alle filters</button></a>
+                </div>
+                <!-- End .axil-shop-sidebar -->
+            </div>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="axil-shop-top mb--10">
+                            <div
+                                class="category-select align-items-center justify-content-lg-end justify-content-between">
+                                <!-- Start Single Select  -->
+                                <span class="filter-results">{{ count }} producten gevonden</span>
+                                <div class="btn-group">
+                                    <button id="new-button"type="button" class="btn dropdown-toggle sort-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Sorteer op
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                      <li class="dropdown-space"><a class="dropdown-item" href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr "category" category "animal" animal "brand" brand "sort_by" "discount" %}">Meeste korting</a></li>
+                                      <li class="dropdown-space"><a class="dropdown-item" href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr "category" category "animal" animal "brand" brand "sort_by" "low_price" %}">Laagste prijs</a></li>
+                                      <li class="dropdown-space"><a class="dropdown-item" href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr "category" category "animal" animal "brand" brand "sort_by" "high_price" %}">Hoogste prijs</a></li>
+                                      <li class="dropdown-space"><a class="dropdown-item" href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr "category" category "animal" animal "brand" brand "sort_by" "most_recent" %}">Meest recent</a></li>
+                                    </ul>
+                                  </div>
+                                  
+                                
+                            </div>
+                            <div class="d-lg-none">
+                                <button class="product-filter-mobile filter-toggle"><i class="fas fa-filter"></i>
+                                    FILTER</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End .row -->
+                <div class="row row--15">
+                    {% for product in products %}
+                    <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                        <div class="axil-product product-style-one mb--30">
+                            <div class="thumbnail">
+                                <a href="{{ product.product_page_url }}">
+                                    <img src="{{ product.image.url }}" alt="Product Images">
+                                </a>
+                                {% if product.sale != 0.0 %}
+                                <div class="label-block label-right">
+                                    <div class="product-badget">
+                                        {{ product.sale }}% korting
+                                    </div>
+                                </div>
+                                {% endif%}
+                            </div>
+                            <div class="product-content">
+                                <div class="inner">
+                                    <p class="brandname">{{ product.brand }}</p>
+                                    <h5 class="title titelproduct"><a href="{{ product.product_page_url }}">{{ product.product_title}}</a></h5>
+                                    {% comment %} <h5 class="title titelproduct" style="height: 40pt;"><a href="{{ product.product_page_url }}">{{ product.product_title}}</a></h5> {% endcomment %}
+                                    <p class="product-category">{{ product.category }} | {{ product.age_group }}</p>
+                                    <div class="product-price-variant">
+                                        {% if product.sale_price != product.normal_price %}
+                                        <span class="price old-price">
+                                            €{{ product.normal_price|floatformat:"2" }}
+                                        </span>
+                                        {% endif %}
+                                        <span class="price current-price">€{{ product.sale_price|floatformat:"2" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- End Single Product  -->
+                </div>
+                <div class="pagination" style="float:right; display:flex; align-items:center; justify-content:center;">
+                    {% if page_obj.has_previous %}
+                        {% if page_obj.previous_page_number != 1 %}
+                            <button class="page-button"><a href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr animal category age_group brand sort_by %}">&laquo;1</a></button>
+                        {% endif %}
+                        <button class="page-button"><a href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr animal category age_group brand sort_by page_obj.previous_page_number%}">{{ page_obj.previous_page_number }}</a></button>
+                    {% endif %}
+        
+                        <button class="page-button-active">{{ page_obj.number }}</button>
+                    {% if page_obj.number < max_pages %}
+                        {% if page_obj.has_next %}
+                            <button class="page-button"><a href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr animal category age_group brand sort_by page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a></button>
+                            {% if page_obj.next_page_number != max_pages %}
+                                <button class="page-button"><a href="{% url 'website:aanbiedingen-algemeen' %}{% urlstr animal category age_group brand sort_by max_pages %}">{{ max_pages }}&raquo;</a></button>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    {% comment %} {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; 1</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                    {% endif %}
+            
+                    <span class="current-page">
+                        {{ page_obj.number }}
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }} &raquo;</a>
+                    {% endif %} {% endcomment %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End .container -->
+</div>
+
+<!-- End Shop Area  -->
+{% endblock content %}
