@@ -1,0 +1,3 @@
+#ignore settings.py because difference for local and online
+petfood/settings.py
+petoofd/venv/
