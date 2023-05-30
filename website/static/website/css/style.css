@@ -20954,3 +20954,11 @@ div[slider]>input[type=range]::-ms-tooltip {
     justify-content: center;
   }
 } */
+
+.titelproduct {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  /* Maximum number of lines to display */
+}
