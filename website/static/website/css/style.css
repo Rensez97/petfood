@@ -5049,6 +5049,14 @@ Slider Style
   }
 }
 
+@media only screen and (max-width: 767px) {
+  .main-slider-content .shop-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .main-slider-content .shop-btn a:last-child {
   margin-right: 0;
 }
@@ -7468,13 +7476,13 @@ Header Styles
 
 @media only screen and (max-width: 991px) {
   .header-brand a img {
-    max-height: 35px;
+    max-height: 45px;
   }
 }
 
 @media only screen and (max-width: 320px) {
   .header-brand a img {
-    max-height: 30px;
+    max-height: 45px;
   }
 }
 
@@ -8736,11 +8744,11 @@ Header Styles
 }
 
 .mobile-nav-brand {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .mobile-nav-brand img {
-  max-height: 35px;
+  max-height: 55px;
 }
 
 @media only screen and (min-width: 992px) {
